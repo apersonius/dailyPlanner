@@ -9,6 +9,15 @@ $(document).ready(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+
+  $(".saveBtn").click(function (event) {
+    event.preventDefault();
+
+    let value = $(this).siblings("time-block").val();
+    let time = $(this).parent().attr("id").split("-")[1];
+    localStorage.setItem(time, value);
+  });
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -32,7 +41,19 @@ $(document).ready(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+$("hr-9 .time-block").val(localStorage.getItem("9"));
+$("hr-10 .time-block").val(localStorage.getItem("10"));
+$("hr-11 .time-block").val(localStorage.getItem("11"));
+$("hr-12 .time-block").val(localStorage.getItem("12"));
+$("hr-13 .time-block").val(localStorage.getItem("13"));
+$("hr-14 .time-block").val(localStorage.getItem("14"));
+$("hr-15 .time-block").val(localStorage.getItem("15"));
+$("hr-16 .time-block").val(localStorage.getItem("16"));
+$("hr-17 .time-block").val(localStorage.getItem("17"));
+
   // TODO: Add code to display the current date in the header of the page.
-  let dt = new Date();
-  document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+  let NowMoment = moment().format("MMMM Do YYYY");
+  let displayDate = document.getElementById("datetime");
+  displayDate.innerHTML = NowMoment;
+  let currentHour = moment().format("HH");
 });
