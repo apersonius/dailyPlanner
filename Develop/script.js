@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-
+const timeDisplay = $('#currentDay');
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -25,4 +25,12 @@ $(function () {
   
 
   // TODO: Add code to display the current date in the header of the page.
+function displayTime() {
+  let rightNow = dayjs().format('MMM DD, YYYY');
+  timeDisplay.text(rightNow);
+}
+
+displayTime();
+setInterval(displayTime, 1000);
+
 });
